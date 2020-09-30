@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from ferreteria.views import CategoriaViewset
+from ferreteria.views import CategoriaViewset, ProveedorViewset, UnidadDeMedidaViewset, ProductoViewset, ProductoPorUnidadDeMedidaViewset
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('categoria', CategoriaViewset)
-
+router.register('proveedor', ProveedorViewset)
+router.register('unidadmedida', UnidadDeMedidaViewset)
+router.register('producto', ProductoViewset)
+router.register('productomedida', ProductoPorUnidadDeMedidaViewset)
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
