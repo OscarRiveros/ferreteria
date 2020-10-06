@@ -25,7 +25,7 @@ SECRET_KEY = 'zbbyzqs#$)+qa5n*!i6ob^dpwl^k%sk8nht7t!6ggrhe=1g*$)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,15 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+"""
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
+"""
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,8 +65,9 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8081',
+    'http://localhost:3000',
 )
+
 
 ROOT_URLCONF = 'backendFerreteria.urls'
 
