@@ -7,6 +7,7 @@ import "./App.css";
 import Proveedor from "./components/Proveedor";
 import categoria from "./components/categoria";
 import unidadmedida from "./components/unidadmedida";
+//import Productos from "./components/Productos";
 import Navegation from "./components/Navegation";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../src/components/temaConfig";

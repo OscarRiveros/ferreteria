@@ -95,6 +95,9 @@ class unidadmedida extends Component {
       <div className="container">
         <div className="App">
           <br />
+          <br />
+          <br />
+          <br />
           <h1>Unidad de Medida</h1>
           <table className="table">
             <thead>
@@ -133,6 +136,7 @@ class unidadmedida extends Component {
                   </tr>
                 );
               })}
+              <br />
               <br />
               <button
                 className="btn btn-success"

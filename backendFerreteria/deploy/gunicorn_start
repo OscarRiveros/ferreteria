@@ -1,0 +1,39 @@
+#!/bin/bash
+
+### Define script variables
+### =====================================================================================================================
+
+NAME="backendFerreterua"                                         # Name of the application
+VIRTUALENV="/home/OscarRiveros/Documentos/backendFerreteria/env"                         # Path to virtualenv
+DJANGODIR="/home/OscarRiveros/Documentos/backendFerreteria"                               # Django Project Directory
+USER=OscarRiveros                                            # the user to run as
+GROUP=OscarRiveros                                          # the group to run as
+NUM_WORKERS=3                                                   # No. of worker processes Gunicorn should spawn
+DJANGO_SETTINGS_MODULE=backendFerreteria.backendFerreteria.settings               # Settings file that Gunicorn should use
+DJANGO_WSGI_MODULE=backendFerreteria.wsgi                                  # WSGI module name
+
+
+### Activate virtualenv and create environment variables
+### =====================================================================================================================
+
+echo "Starting $NAME as `whoami`"
+# Activate the virtual environment
+cd $VIRTUALENV
+source /bin/activate
+cd $DJANGODIR
+# Defining the Environment Variables
+export DJANGO_SECRET_KEY='zbbyzqs#$)+qa5n*!i6ob^dpwl^k%sk8nht7t!6ggrhe=1g*$)'
+export DATABASE_URL='mysql://django.db.backends.mysql'
+export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+
+
+### Start Gunicorn
+### =====================================================================================================================
+
+exec gunicorn ${DJANGO_WSGI_MODULE}:application \
+        --name $NAME \
+        --workers $NUM_WORKERS \
+        --user=$USER --group=$GROUP \
+        --log-level=debug \
+        --bind=127.0.0.1:8001

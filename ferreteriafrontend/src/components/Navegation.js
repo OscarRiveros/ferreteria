@@ -21,6 +21,10 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import Collapse from "@material-ui/core/Collapse";
 import StarBorder from "@material-ui/icons/StarBorder";
+import categoria from "./categoria";
+import Proveedor from "./Proveedor";
+import unidadmedida from "./unidadmedida";
+import Productos from "./Productos";
 
 const drawerWidth = 240;
 
@@ -29,7 +33,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex"
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
+    marginLeft: drawerWidth
   },
   drawer: {
     width: drawerWidth,
@@ -70,7 +75,7 @@ export default function ClippedDrawer() {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6" noWrap className={classes.title}>
+            <Typography variant="h4" noWrap className={classes.title}>
               Ferreteria
             </Typography>
             <Button variant="text" color="inherit">
@@ -110,12 +115,44 @@ export default function ClippedDrawer() {
               </ListItem>
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItem button className={classes.nested}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <ListItemText primary="Categoria" />
-                  </ListItem>
+                  <Link to="/categoria" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <StarBorder />
+                      </ListItemIcon>
+                      <ListItemText primary="Categoria" />
+                    </ListItem>
+                  </Link>
+                </List>
+                <List component="div" disablePadding>
+                  <Link to="/Proveedor" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <StarBorder />
+                      </ListItemIcon>
+                      <ListItemText primary="Proveedor" />
+                    </ListItem>
+                  </Link>
+                </List>
+                <List component="div" disablePadding>
+                  <Link to="/UnidadMedida" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <StarBorder />
+                      </ListItemIcon>
+                      <ListItemText primary="Unidad de Medida" />
+                    </ListItem>
+                  </Link>
+                </List>
+                <List component="div" disablePadding>
+                  <Link to="/Productos" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <StarBorder />
+                      </ListItemIcon>
+                      <ListItemText primary="Productos" />
+                    </ListItem>
+                  </Link>
                 </List>
               </Collapse>
               <ListItem button>
@@ -127,19 +164,25 @@ export default function ClippedDrawer() {
             </List>
             <Divider />
             <List component="nav" aria-label="secondary mailbox folders">
-              <Link to="/categoria" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <ExitToAppTwoToneIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Login" />
-                </ListItem>
-              </Link>
+              <ListItem button>
+                <ListItemIcon>
+                  <ExitToAppTwoToneIcon />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItem>
             </List>
           </div>
         </Drawer>
         <Switch>
-          <Route exact path="/categoria"></Route>
+          <Route exact path="/categoria" exact component={categoria}></Route>
+          <Route exact path="/Proveedor" exact component={Proveedor}></Route>
+          <Route
+            exact
+            path="/UnidadMedida"
+            exact
+            component={unidadmedida}
+          ></Route>
+          <Route exact path="/Productos" exact component={Productos}></Route>
         </Switch>
       </div>
     </Router>

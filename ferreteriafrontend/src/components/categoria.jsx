@@ -95,6 +95,9 @@ class categoria extends Component {
       <div className="container">
         <div className="App">
           <br />
+          <br />
+          <br />
+          <br></br>
           <h1>Categoria</h1>
           <table className="table">
             <thead>

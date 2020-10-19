@@ -99,7 +99,12 @@ class Proveedor extends Component {
       <div className="container">
         <div className="App">
           <br />
+          <br />
+          <br />
+          <br />
+
           <h1>Proveedor</h1>
+
           <table className="table">
             <thead>
               <tr>
